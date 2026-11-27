@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  voxcare:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: voxcare-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "com.voxcare.description=Voice-first clinical documentation assistant"
+      - "com.voxcare.version=1.0.0"
+
+# Usage:
+#   docker-compose up --build        → builds and starts on http://localhost:3000
+#   docker-compose up -d --build     → detached (background) mode
+#   docker-compose down              → stop and remove containers
+
